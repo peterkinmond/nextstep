@@ -8,6 +8,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  encrypted_password :string(255)
+#  salt               :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -29,6 +30,16 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
   
+  def has_password?(submitted_password)
+    encrypted_password == encrypt(submitted_password)
+  end  
+  
+  class << self
+    def authenticate(email, submitted_password)
+       user = find_by_email(email)
+       (user && user.has_password?(submitted_password)) ? user : nil                                       
+    end
+  end
   
   private
   
@@ -39,4 +50,5 @@ class User < ActiveRecord::Base
     def encrypt(string)
        string #TODO: change me
     end
+    
 end
