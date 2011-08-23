@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>NextStep: Project Manager</title>
+		<title><%= title %></title>
 		<%= render 'layouts/stylesheets' %>
 		<%= javascript_include_tag :defaults %>
 		<%= csrf_meta_tag %>
@@ -14,5 +14,6 @@
 		</section>
 		</div>          
 		<%= render 'layouts/footer' %>
+		<%= debug(params) if Rails.env.development? %>
 	</body>
 </html>
