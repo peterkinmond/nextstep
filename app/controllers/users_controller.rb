@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       redirect_to @user, :flash => { :success => "User created. Welcome to NextStep!"}
-      # sign_in @user
+      sign_in @user
     else    
       @title = "Sign up"
       render 'new'
