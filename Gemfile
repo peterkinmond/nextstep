@@ -18,4 +18,5 @@ group :test do
 	gem 'annotate'
 	gem 'spork'
 	gem 'factory_girl_rails', '1.0'
+	gem 'shoulda-matchers'
 end   
