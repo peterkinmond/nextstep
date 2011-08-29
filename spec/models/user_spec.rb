@@ -28,23 +28,13 @@ describe User do
     User.create!(@attr)
   end   
    
-  it { should validate_presence_of(:name) }  
-  
-  it "should reject names that are too long" do
-     long_name = "a" * 51
-     long_name_user = User.new(@attr.merge(:name => long_name))
-     long_name_user.should_not be_valid
-  end                                      
-  
+  it { should validate_presence_of(:name) } 
+  it { should ensure_length_of(:name).is_at_most(50) } 
+    
   it { should validate_presence_of(:email) }
-  
-  it "should accept valid email addresses" do
-     addresses = %w[user@foo,com THE_USER_atfoo.bar.org first.last@foo.]
-     addresses.each do |address|
-        invalid_email_user = User.new(@attr.merge(:email => address))
-        invalid_email_user.should_not be_valid
-     end
-  end
+  it { should_not allow_value('user@foo,com').for(:email) }
+  it { should_not allow_value('THE_USER_atfoo.bar.org').for(:email) }
+  it { should_not allow_value('first.last@foo.').for(:email) }
 
   it "should reject duplicate email addresses" do
      User.create!(@attr)
