@@ -1,16 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                 :integer         not null, primary key
-#  name               :string(255)
-#  email              :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  encrypted_password :string(255)
-#  salt               :string(255)
-#
-
 require 'spec_helper'
 
 describe User do
@@ -28,6 +15,8 @@ describe User do
     User.create!(@attr)
   end   
    
+  it { should have_many(:projects) }
+  
   it { should validate_presence_of(:name) } 
   it { should ensure_length_of(:name).is_at_most(50) } 
     
