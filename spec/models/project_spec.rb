@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Project do
-  it { should belong_to(:user) }
+  describe "relationships" do
+    it { should belong_to(:user) }
+    it { should have_many(:steps) }
+  end
 end

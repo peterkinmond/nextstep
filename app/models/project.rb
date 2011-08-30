@@ -21,6 +21,7 @@ class Project < ActiveRecord::Base
   # 3 = Archived
   
   belongs_to :user
+  has_many :steps
 end
 
 
