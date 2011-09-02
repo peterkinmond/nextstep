@@ -22,6 +22,8 @@ class Project < ActiveRecord::Base
   
   belongs_to :user
   has_many :steps
+  
+  validates :user, :presence => true
 end
 
 

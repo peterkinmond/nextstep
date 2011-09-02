@@ -2,6 +2,6 @@ class ProjectsController < ApplicationController
   before_filter :authenticate
   
   def index
-    @projects = Project.all
+    @projects = Project.where(:user_id => current_user)
   end
 end
