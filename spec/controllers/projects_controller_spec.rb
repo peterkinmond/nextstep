@@ -8,8 +8,8 @@ describe ProjectsController do
     describe "user associations" do
     
       before(:each) do
-         @user1 = test_sign_in(Factory(:user))
-         @user1project = @user1.projects.create(:name => "User 1's Project")
+         @user = test_sign_in(Factory(:user))
+         @project = @user.projects.create(:name => "User 1's Project")
          
          @other_user = Factory(:user, :email => Factory.next(:email)) 
          @other_user_project = @other_user.projects.create(:name => "Other user's project")
@@ -28,6 +28,12 @@ describe ProjectsController do
        it "should NOT show projects that DO NOT belong to current user" do
           get :index
           response.should_not have_selector('td.projectname', :content => "Other user's project")
+       end
+       
+       it "should link to project" do
+          get :index
+          response.should have_selector('a',  :href => project_path(@project),
+                                              :content => "User 1's Project")
        end
    end
   end
