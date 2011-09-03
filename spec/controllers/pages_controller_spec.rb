@@ -14,6 +14,5 @@ describe PagesController do
       get 'contact'
       response.should be_success
     end
-  end
-
+  end   
 end
