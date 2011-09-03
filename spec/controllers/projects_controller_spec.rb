@@ -37,4 +37,28 @@ describe ProjectsController do
        end
    end
   end
+
+  describe "GET 'show'" do
+    
+    before(:each) do
+       @user = test_sign_in(Factory(:user))
+       @project = @user.projects.create(:name => "La Project Du Pierre")
+    end
+    
+     it "should be successful" do
+        get :show, :id => @project
+        response.should be_success
+     end
+     
+     it "should have the right project" do
+        get :show, :id => @project
+        assigns(:project).should == @project
+     end
+     
+     describe "project steps" do
+        xit "should show all steps for current project" do
+        end
+     end
+       
+  end
 end
