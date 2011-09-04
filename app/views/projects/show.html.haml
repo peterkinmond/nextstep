@@ -1,2 +1,9 @@
+= link_to "Back to all projects", projects_path
 %h1 
 	Project: #{@project.name}
+%table
+	%tr
+		%th Done?
+		%th Step
+		%th Est. Time (Min)
+		= render @project.steps 
