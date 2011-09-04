@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830050138) do
+ActiveRecord::Schema.define(:version => 20110904232540) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20110830050138) do
     t.integer  "project_id"
     t.text     "content"
     t.integer  "estimated_time"
-    t.boolean  "completed"
+    t.boolean  "completed",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
