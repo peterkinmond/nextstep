@@ -1,0 +1,10 @@
+%header
+	%nav.round
+		%ul
+			%li= link_to "Home", root_path
+			- if signed_in?
+				%li= link_to "Sign Out", signout_path
+			- else
+				%li= link_to "Sign In", signin_path
+			%li= link_to "To-Do", root_path
+			%li= link_to "Projects", projects_path
