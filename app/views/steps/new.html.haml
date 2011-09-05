@@ -1,0 +1,9 @@
+%h1 Add new step
+
+= form_for(@project.steps.new) do |f|
+	= f.hidden_field :project_id, :value => @project.id
+	.field
+		= f.label :content
+		= f.text_field :content
+	.actions
+		= f.submit "Add"  

@@ -54,11 +54,5 @@ describe ProjectsController do
         get :show, :id => @project
         assigns(:project).should == @project
      end
-     
-     describe "project steps" do
-        xit "should show all steps for current project" do
-        end
-     end
-       
   end
 end
