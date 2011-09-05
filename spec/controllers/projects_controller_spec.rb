@@ -3,6 +3,13 @@ require 'spec_helper'
 describe ProjectsController do
   render_views
   
+  describe "access control" do
+    it "should deny access to 'index'" do
+      get :index
+      response.should redirect_to(signin_path)
+    end
+  end
+  
   describe "GET 'index'" do 
     
     describe "user associations" do

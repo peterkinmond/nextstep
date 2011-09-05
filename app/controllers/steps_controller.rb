@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+  before_filter :authenticate
+  
   def new
      @step = Step.new
   end
@@ -10,5 +12,9 @@ class StepsController < ApplicationController
      else
        render 'new'
      end
+  end
+  
+  def destroy
+    
   end
 end
