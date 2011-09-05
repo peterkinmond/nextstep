@@ -1,9 +1,12 @@
-%h1 Add new step
+%h3 Add new step
 
 = form_for(@project.steps.new) do |f|
 	= f.hidden_field :project_id, :value => @project.id
 	.field
 		= f.label :content
-		= f.text_field :content
+		= f.text_field :content, :class => "NewStep", :autofocus => true
+	.field
+		= f.label :estimated_time
+		= f.select(:estimated_time, %w[5 10 15 20 25 30 35 40], :selected => 10)
 	.actions
 		= f.submit "Add"  
