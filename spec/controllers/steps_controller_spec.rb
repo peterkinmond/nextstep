@@ -62,12 +62,63 @@ describe StepsController do
     end
   end
 
-  describe "DELETE 'destroy'" do 
-    # TODO: Replace pile of setup non-sense with something cleaner
+  describe "GET 'edit'" do
+    # TODO: Replace pile of setup nonsense with something cleaner
     before(:each) do
       @user = test_sign_in(Factory(:user)) 
       @project = @user.projects.create(:name => "this project")
-      # @step = Factory(:step)   
+      @step = @project.steps.create(:content => "this step")
+    end
+
+    it "should be successful" do
+      put :edit, :id => @step
+      response.should be_success
+    end
+  end
+
+  describe "PUT 'update'" do
+    # TODO: Replace pile of setup nonsense with something cleaner
+    before(:each) do
+      @user = test_sign_in(Factory(:user)) 
+      @project = @user.projects.create(:name => "this project")
+      @step = @project.steps.create(:content => "this step")
+    end
+
+    describe "failure" do
+      before(:each) do
+        @attr = { :content => ""}   
+      end
+
+      it "should render the 'edit' page" do
+        put :update, :id => @step, :step => @attr
+        response.should render_template('edit')
+      end
+    end
+
+    describe "success" do
+      before(:each) do
+        @attr = { :content => "updated step content", :estimated_time => 45}   
+      end
+      
+      it "should change the step's attributes" do
+         put :update, :id => @step, :step => @attr
+         @step.reload
+         @step.content.should == "updated step content"
+         @step.estimated_time.should == 45
+      end  
+      
+      it "should redirect to the project page" do
+        put :update, :id => @step, :step => @attr
+        response.should redirect_to(project_path(@step.project))
+      end
+    end
+  end
+
+  describe "DELETE 'destroy'" do 
+    # TODO: Replace pile of setup nonsense with something cleaner
+    before(:each) do
+      @user = test_sign_in(Factory(:user)) 
+      @project = @user.projects.create(:name => "this project")
       @step = @project.steps.create(:content => "this step")
     end
 
@@ -76,10 +127,10 @@ describe StepsController do
         delete :destroy, :id => @step
       end.should change(Step, :count).by(-1)
     end
-    
+
     it "should redirect to the project page" do
-       delete :destroy, :id => @step
-       response.should redirect_to(project_path(@step.project))
+      delete :destroy, :id => @step
+      response.should redirect_to(project_path(@step.project))
     end
   end
 end
