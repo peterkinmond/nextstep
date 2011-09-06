@@ -1,0 +1,7 @@
+%h3 Edit project
+
+= form_for(@project) do |f|
+	.field
+		= f.text_field :name, :class => "NewProject", :size => 100, :autofocus => true
+	.actions
+		= f.submit "Update"
