@@ -28,4 +28,8 @@ class Project < ActiveRecord::Base
   def next_step
      self.steps.where(:completed => false).first
   end
+  
+  def next_step_string
+    self.next_step ? self.next_step.content : 'None'
+  end
 end

@@ -42,6 +42,11 @@ describe ProjectsController do
           response.should have_selector('a',  :href => project_path(@project),
                                               :content => "User 1's Project")
        end
+       
+       it "should show the next step for each project" do
+          get :index
+          response.should have_selector('td.nextstep', :content => "None")
+       end
    end
   end
 
