@@ -24,6 +24,8 @@ class Project < ActiveRecord::Base
   has_many :steps
   
   validates :user, :presence => true
+  
+  def next_step
+     self.steps.where(:completed => false).first
+  end
 end
-
-

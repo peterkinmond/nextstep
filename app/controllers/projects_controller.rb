@@ -7,5 +7,6 @@ class ProjectsController < ApplicationController
  
   def show
     @project = Project.find(params[:id])
+    @next_step_string = @project.next_step ? @project.next_step.content : 'None'
   end
 end

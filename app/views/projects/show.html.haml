@@ -1,6 +1,8 @@
 = link_to "Back to all projects", projects_path
-%h1 
+%h1
 	Project: #{@project.name}
+%h3
+	Next Step: #{@next_step_string}
 %table
 	%tr
 		%th Done?
