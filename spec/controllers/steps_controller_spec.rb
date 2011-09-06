@@ -8,7 +8,7 @@ describe StepsController do
       response.should redirect_to(signin_path)
     end
 
-    xit "should deny access to 'destroy'" do
+    it "should deny access to 'destroy'" do
       delete :destroy, :id => 1 
       response.should redirect_to(signin_path)
     end       
@@ -68,12 +68,18 @@ describe StepsController do
       @user = test_sign_in(Factory(:user)) 
       @project = @user.projects.create(:name => "this project")
       # @step = Factory(:step)   
-      @step = @project.steps.create(:content => "htis step")
+      @step = @project.steps.create(:content => "this step")
+    end
+
+    it "should destroy the step" do
+      lambda do
+        delete :destroy, :id => @step
+      end.should change(Step, :count).by(-1)
     end
     
-    it "should be successful" do
-        delete :destroy, :id => @step
-        response.should be_success
+    it "should redirect to the project page" do
+       delete :destroy, :id => @step
+       response.should redirect_to(project_path(@step.project))
     end
   end
 end

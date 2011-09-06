@@ -10,11 +10,13 @@ class StepsController < ApplicationController
      if @step.save
        redirect_to project_path(@step.project)
      else
-       render 'new'
+       render :new
      end
   end
   
   def destroy
-    
+     @step = Step.find(params[:id])
+     @step.destroy
+     redirect_to project_path(@step.project)
   end
 end
