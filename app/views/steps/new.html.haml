@@ -1,7 +1,7 @@
 = form_for(@project.steps.new) do |f|
 	= f.hidden_field :project_id, :value => @project.id
 	.field
-		= f.text_field :content, :class => "hintActiveTextbox", :value => "Add new step", :size => 100, :autofocus => true
+		= f.text_area :content, :class => "hintActiveTextbox", :placeholder => "Add new step", :autofocus => true, :style => "height:16px;width:600px;"
 		= f.select(:estimated_time, %w[5 10 15 20 25 30 35 40], :selected => 10)
 		min
 	.actions
