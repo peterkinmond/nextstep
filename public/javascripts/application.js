@@ -45,3 +45,10 @@ function onHintTextboxBlur() {
 }
 
 window.onload = initHintTextboxes;
+
+
+
+// Make checkboxes auto-update form
+$('.submittable').live('change', function() {
+  $(this).parents('form:first').submit();
+});

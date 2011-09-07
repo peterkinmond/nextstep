@@ -1,6 +1,7 @@
 %tr
 	%td
-		%input{ :type => "checkbox", :value => "selected", :checked => step.completed}
+		= form_for step do |f|
+			= f.check_box 'completed', :class => 'submittable'
 	%td
 		= step.content
 	%td
