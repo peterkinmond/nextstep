@@ -1,5 +1,5 @@
 .container {
-	width: 710px;
+	width: 960px;
 }
 
 body {
@@ -32,7 +32,7 @@ section {
 footer {
 	text-align: center;
 	margin-top: 10px;
-	width: 710px;
+	width: 960px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -44,7 +44,7 @@ footer nav {
 /* Links */ 
 
 a {
-	color: #09c;
+	color: #069;
 	text-decoration: none;
 }                        
 
@@ -82,8 +82,3 @@ nav ul li a {
 	padding: 0 5px;
 	font-weight: bold;
 }
-
-
-/* Hint textbox */
-INPUT.hintTextbox       { color: #888; }
-INPUT.hintTextboxActive { color: #000; }
