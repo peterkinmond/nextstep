@@ -82,3 +82,13 @@ nav ul li a {
 	padding: 0 5px;
 	font-weight: bold;
 }
+
+/* Steps */
+
+.step_completed {
+	text-decoration: line-through;
+}
+
+.step_uncompleted {
+	font-weight: bold;
+}

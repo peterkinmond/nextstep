@@ -3,7 +3,12 @@
 		= form_for step do |f|
 			= f.check_box 'completed', :class => 'submittable'
 	%td
-		= step.content
+		- if step.completed
+			.step_completed
+				= step.content   
+		- else
+			.step_uncompleted
+				= step.content   
 	%td
 		= step.estimated_time
 	%td
