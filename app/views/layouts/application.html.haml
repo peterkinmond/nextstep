@@ -3,7 +3,8 @@
 	%head
 		%title= title
 		= render 'layouts/stylesheets'
-		= javascript_include_tag :all
+		= javascript_include_tag :defaults
+		= javascript_include_tag "jquery.hotkeys", "jquery.watermark"
 		= csrf_meta_tag
 	%body
 		.container
