@@ -5,6 +5,6 @@
 			- if signed_in?
 				%li= link_to "Sign Out", signout_path
 				%li= link_to "To-Do", root_path
-				%li= link_to "Projects", projects_path
+				%li= link_to "Projects", projects_path, :id => 'projects_page'
 			- else
 				%li= link_to "Sign In", signin_path

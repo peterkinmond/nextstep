@@ -1,5 +1,5 @@
 = form_for(Project.new) do |f|
 	.field
-		= f.text_area :name, :class => "smallTextbox", :placeholder => 'Add new project', :style => "height:16px;width:600px;"
+		= f.text_field :name, :class => "smallTextbox", :placeholder => 'Add new project', :style => "height:20px;width:600px;"
 	.actions
 		= f.submit "Add"

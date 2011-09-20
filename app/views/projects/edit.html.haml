@@ -2,6 +2,6 @@
 
 = form_for(@project) do |f|
 	.field
-		= f.text_field :name, :class => "NewProject", :size => 100, :autofocus => true
+		= f.text_field :name, :class => "NewProject", :size => 100, :autofocus => true, :style => "height:20px;width:600px;"
 	.actions
 		= f.submit "Update"
