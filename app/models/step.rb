@@ -12,7 +12,7 @@
 #
 
 class Step < ActiveRecord::Base
-  attr_accessible :content, :estimated_time, :completed, :project_id
+  attr_accessible :content, :estimated_time, :completed, :project_id, :urgent, :important
   
   belongs_to :project
   
