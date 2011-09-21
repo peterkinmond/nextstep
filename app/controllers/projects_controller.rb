@@ -40,4 +40,8 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to projects_path
   end
+  
+  def todo
+    @projects = Project.where(:user_id => current_user)
+  end
 end

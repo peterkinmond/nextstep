@@ -1,0 +1,15 @@
+%h1 
+	To-Do
+%table
+	%tr
+		%th Next Step
+		%th Est. Time
+		/ %th Priority
+	- @projects.each do |project|
+		%tr
+			%td.projectname
+				= link_to project.next_step_string, project
+			%td
+				= project.next_step.estimated_time
+				min
+			/ %td

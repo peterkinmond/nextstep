@@ -33,7 +33,7 @@ describe ProjectsController do
           post :create, :project  => @project
         end.should change(Project, :count).by(1)
       end
-      
+
       it "should redirect to the project index page" do
         post :create, :project => @project
         response.should redirect_to(projects_path)
@@ -61,7 +61,7 @@ describe ProjectsController do
       it "should show projects that belong to current user" do
         get :index      
         response.should have_selector('td.projectname', :content => "User 1's Project")
-      end
+      end                            
 
       it "should NOT show projects that DO NOT belong to current user" do
         get :index
@@ -96,6 +96,18 @@ describe ProjectsController do
     it "should have the right project" do
       get :show, :id => @project
       assigns(:project).should == @project
+    end
+  end
+
+  describe "GET 'todo'" do
+    
+    before(:each) do
+      @user = test_sign_in(Factory(:user))
+    end
+    
+    it "should be successful" do
+      get :todo
+      response.should be_success
     end
   end
 end
