@@ -26,6 +26,12 @@ function domo() {
         $(location).attr('href', '/projects');
         return false;
     });
+
+	// Select todo page
+	jQuery(document).bind('keydown', 'shift+t', function (evt) {
+        $(location).attr('href', '/todo');
+        return false;
+    });
 }
 
 
