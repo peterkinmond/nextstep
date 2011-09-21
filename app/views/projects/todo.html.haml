@@ -4,7 +4,7 @@
 	%tr
 		%th Next Step
 		%th Est. Time
-		/ %th Priority
+		%th Priority
 	- @projects.each do |project|
 		%tr
 			%td.projectname
@@ -12,4 +12,12 @@
 			%td
 				= project.next_step.estimated_time
 				min
-			/ %td
+			%td.priority
+				- if project.next_step.urgent
+					U
+				- else
+					u
+				- if project.next_step.important
+					I
+				- else
+					i

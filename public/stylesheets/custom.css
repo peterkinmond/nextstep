@@ -92,3 +92,10 @@ nav ul li a {
 .step_uncompleted {
 	font-weight: bold;
 }
+
+
+/* Todo List */
+.priority {
+	font-weight: bold;
+	font-size: 130%;
+}
