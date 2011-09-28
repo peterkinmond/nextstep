@@ -1,15 +1,29 @@
-%h1= @title
-
-= form_for(:session, :url => sessions_path) do |f|
-	.field
-		= f.label :email
-		%br/
-		= f.text_field :email, :autofocus => true
-	.field
-		= f.label :password
-		%br/
-		= f.password_field :password
-	.actions
-		= f.submit "Sign in"
-%p 
-	New user? #{link_to "Sign up now!", signup_path}
+%div.sign-in
+	%h3= @title 
+	= form_for(:session, :url => sessions_path) do |f|
+		.field
+			= f.label :email
+			%br/
+			= f.text_field :email, :autofocus => true
+		.field
+			= f.label :password
+			%br/
+			= f.password_field :password
+		.actions
+			= f.submit "Sign in"
+	%p 
+	%p
+		New user? #{link_to "Sign up now!", signup_path}
+		
+%div.welcome-blurb
+	%h2 Welcome to NextStep
+	
+	%p
+		NextStep is a project tracker to help keep things organized in a simple way. 
+		It's loosely based on some of the principles from David Allen's 
+		#{link_to "Getting Things Done", "http://www.amazon.com/gp/product/0142000280", :target => "_blank"}.
+		 
+	%p
+		#{link_to "Find out more information about how to use the app", about_path }
+	%p
+		#{link_to "Contact me", contact_path }

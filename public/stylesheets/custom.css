@@ -19,6 +19,21 @@ section {
 	background: white;
 }
 
+/*   SignIn Page  */
+.sign-in {
+	width: 335px;
+	float: right;
+	background: whiteSmoke;
+	margin: 12px 0 0;
+	padding: 20px;
+	border: 1px solid #E5E5E5;
+}
+
+.welcome-blurb {
+	height: 400px;
+	width: 450px;
+}
+
 /* Round corners */
                 
 .round {
