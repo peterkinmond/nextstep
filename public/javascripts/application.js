@@ -3,35 +3,64 @@
 
 // Make checkboxes auto-update form
 $('.submittable').live('change', function() {
-    $(this).parents('form:first').submit();
+	$(this).parents('form:first').submit();
 });
 
 
 // Add hot keys! So hot!!
 function domo() {
-    // Add new project
-    jQuery(document).bind('keydown', 'p', function (evt) {
-        $('#project_name').focus();
-        return false;
-    });
+	// Add new project
+	jQuery(document).bind('keydown', 'p', function (evt) {
+		$('#project_name').focus();
+		return false;
+	});
 
-    // Add new step
-    jQuery(document).bind('keydown', 's', function (evt) {
-        $('#step_content').focus();
-        return false;
-    });
+	// Add new step
+	jQuery(document).bind('keydown', 's', function (evt) {
+		$('#step_content').focus();
+		return false;
+	});
 
-    // Select project#index page
-    jQuery(document).bind('keydown', 'shift+p', function (evt) {
-        $(location).attr('href', '/projects');
-        return false;
-    });
+	// Select project#index page
+	jQuery(document).bind('keydown', 'shift+p', function (evt) {
+		$(location).attr('href', '/projects');
+		return false;
+	});
 
 	// Select todo page
 	jQuery(document).bind('keydown', 'shift+t', function (evt) {
-        $(location).attr('href', '/todo');
-        return false;
-    });
+		$(location).attr('href', '/todo');
+		return false;
+	});
+
+
+	// Select specific project's page
+	if(window.location.pathname === '/projects') {
+		jQuery(document).bind('keydown', 'shift+1', function (evt) {
+			$(location).attr('href', '/projects/' + $('#1').attr('project_id'));
+			return false;
+		});
+		
+		jQuery(document).bind('keydown', 'shift+2', function (evt) {
+			$(location).attr('href', '/projects/' + $('#2').attr('project_id'));
+			return false;
+		}); 
+		
+		jQuery(document).bind('keydown', 'shift+3', function (evt) {
+			$(location).attr('href', '/projects/' + $('#3').attr('project_id'));
+			return false;
+		});      
+		
+		jQuery(document).bind('keydown', 'shift+4', function (evt) {
+			$(location).attr('href', '/projects/' + $('#4').attr('project_id'));
+			return false;
+		});
+		
+		jQuery(document).bind('keydown', 'shift+5', function (evt) {
+			$(location).attr('href', '/projects/' + $('#5').attr('project_id'));
+			return false;
+		});
+	}
 }
 
 
