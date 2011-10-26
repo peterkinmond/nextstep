@@ -7,4 +7,5 @@ describe Step do
   it { should have_db_column(:completed).of_type(:boolean)}  
   it { should have_db_column(:urgent).of_type(:boolean)} 
   it { should have_db_column(:important).of_type(:boolean)} 
+  it { should have_db_column(:position).of_type(:integer)}
 end                                    
