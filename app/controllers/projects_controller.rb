@@ -43,5 +43,6 @@ class ProjectsController < ApplicationController
   
   def todo
     @projects = Project.where(:user_id => current_user)
+    @next_steps = @projects.each {|p| p.next_step}
   end
 end
