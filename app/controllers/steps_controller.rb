@@ -6,12 +6,12 @@ class StepsController < ApplicationController
   end
 
   def create
-    @step = Step.new(params[:step])
-    if @step.save
-      redirect_to project_path(@step.project)
-    else
-      render :new
-    end
+    @project = Project.find(params[:project_id])
+    step = Step.new(params[:step])
+    step.project = @project
+    step.save
+    @steps = @project.steps
+    render :index
   end
 
   def index
@@ -20,21 +20,22 @@ class StepsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:project_id])    
     @step = Step.find(params[:id])
   end
 
   def update
     @step = Step.find(params[:id])
     if @step.update_attributes(params[:step])
-      redirect_to project_path(@step.project)
+      redirect_to project_steps_path(@step.project)
     else
       render 'edit'
-    end
+    end   
   end
 
   def destroy
     @step = Step.find(params[:id])
     @step.destroy
-    redirect_to project_path(@step.project)
+    redirect_to project_steps_path(@step.project)
   end
 end

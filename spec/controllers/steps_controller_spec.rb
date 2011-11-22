@@ -17,24 +17,12 @@ describe StepsController do
     end       
   end
 
-  describe "GET 'new'" do
-    it "should be successful" do
-      get :new, :project_id => project.id
-      response.should be_success
-    end
-  end
-
   describe "POST 'create'" do
     describe "failure" do
       it "should be successful" do
         post :create, :project_id => project.id, :step => ""
         response.should be_success
       end
-
-      it "should redirect to the 'new' page" do
-        post :create, :project_id => project.id, :step => ""
-        response.should render_template('new')
-      end                            
 
       it "should not create a step" do
         lambda do
@@ -101,7 +89,7 @@ describe StepsController do
       
       it "should redirect to the project page" do
         put :update, :project_id => project.id, :id => step, :step => @attr
-        response.should redirect_to(project_path(step.project))
+        response.should redirect_to(project_steps_path(step.project))
       end
     end
   end
@@ -119,7 +107,7 @@ describe StepsController do
 
     it "should redirect to the project page" do
       delete :destroy, :project_id => project.id, :id => step
-      response.should redirect_to(project_path(step.project))
+      response.should redirect_to(project_steps_path(step.project))
     end
   end
 end
