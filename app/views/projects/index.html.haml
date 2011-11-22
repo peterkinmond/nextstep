@@ -1,9 +1,10 @@
 %h1 
 	All projects
 %table
-	%tr
-		%th Project Name
-		%th Next Step
-		%th Actions  
-		= render @projects
+	%thead
+		%tr
+			%th Project Name
+			%th Next Step
+			%th Actions  
+			= render @projects 
 = render :template => 'projects/new'
