@@ -1,4 +1,4 @@
-= form_for(@project.steps.new) do |f|
+= form_for(@step) do |f|
 	= f.hidden_field :project_id, :value => @project.id
 	.field
 		= f.text_field :content, :class => "NewStep", :size => 100, :placeholder => 'Add new step', :style => "height:20px;width:600px;"
