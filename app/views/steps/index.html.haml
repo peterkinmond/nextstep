@@ -1,0 +1,31 @@
+= link_to "Back to all projects", projects_path
+%h1
+	Project: #{@project.name}
+%h3
+	Next Step: #{@project.next_step_string}
+%table
+	%thead
+		%tr
+			%th Done?
+			%th Step
+			%th Est. Time (Min)
+			%th Actions 
+	%tbody
+		- @steps.each do |step|
+			%tr
+				%td
+					= form_for [@project, step] do |f|
+						= f.check_box 'completed', :class => 'submittable'
+				%td
+					- if step.completed
+						.step_completed
+							= step.content   
+					- else
+						.step_uncompleted
+							= step.content   
+				%td
+					= step.estimated_time
+				%td
+					= link_to 'Update', edit_project_step_path(@project, step)
+					= link_to 'Delete', project_step_path(@project, step), :method => :delete
+/ = render :template => 'steps/new'

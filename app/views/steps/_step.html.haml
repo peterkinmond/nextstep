@@ -1,6 +1,6 @@
 %tr
 	%td
-		= form_for step do |f|
+		= form_for @step do |f|
 			= f.check_box 'completed', :class => 'submittable'
 	%td
 		- if step.completed

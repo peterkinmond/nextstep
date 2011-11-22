@@ -14,6 +14,11 @@ class StepsController < ApplicationController
     end
   end
 
+  def index
+    @project = Project.find(params[:project_id]) 
+    @steps = @project.steps
+  end
+
   def edit
     @step = Step.find(params[:id])
   end
@@ -26,7 +31,7 @@ class StepsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @step = Step.find(params[:id])
     @step.destroy

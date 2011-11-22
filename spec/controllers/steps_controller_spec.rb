@@ -58,6 +58,23 @@ describe StepsController do
     end
   end
 
+  describe "GET 'index'" do
+    before(:each) do
+      
+    end
+
+    it "should be successful" do
+      get :index, :project_id => project.id
+      response.should be_success
+    end
+
+    it "should have the right project and steps" do
+      get :index, :project_id => project
+      assigns(:project).should == project
+      assigns(:steps).should == project.steps
+    end   
+  end
+
   describe "PUT 'update'" do
     describe "failure" do
       before(:each) do

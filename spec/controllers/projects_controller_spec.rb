@@ -70,7 +70,7 @@ describe ProjectsController do
 
       it "should link to project" do
         get :index
-        response.should have_selector('a',  :href => project_path(@project),
+        response.should have_selector('a',  :href => project_steps_path(@project),
         :content => "User 1's Project")
       end
 
@@ -80,25 +80,7 @@ describe ProjectsController do
       end
     end
   end
-
-  describe "GET 'show'" do
-
-    before(:each) do
-      @user = test_sign_in(Factory(:user))
-      @project = @user.projects.create(:name => "La Project Du Pierre")
-    end
-
-    it "should be successful" do
-      get :show, :id => @project
-      response.should be_success
-    end
-
-    it "should have the right project" do
-      get :show, :id => @project
-      assigns(:project).should == @project
-    end
-  end
-
+  
   describe "GET 'todo'" do
     
     before(:each) do
