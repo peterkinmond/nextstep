@@ -38,4 +38,8 @@ class StepsController < ApplicationController
     @step.destroy
     redirect_to project_steps_path(@step.project)
   end
+  
+  def sort
+     render :nothing => true
+  end
 end

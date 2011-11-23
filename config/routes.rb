@@ -2,7 +2,9 @@ NextStep::Application.routes.draw do
   resources :users  
   resources :sessions,  :only => [:new, :create, :destroy]
   resources :projects do 
-    resources :steps
+    resources :steps do
+      post 'sort', :on => :collection
+    end
   end
 
   root :to => "sessions#new"

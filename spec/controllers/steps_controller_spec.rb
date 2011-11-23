@@ -48,7 +48,7 @@ describe StepsController do
 
   describe "GET 'index'" do
     before(:each) do
-      
+
     end
 
     it "should be successful" do
@@ -79,14 +79,14 @@ describe StepsController do
       before(:each) do
         @attr = { :content => "updated step content", :estimated_time => 45}   
       end
-      
+
       it "should change the step's attributes" do
-         put :update, :project_id => project.id, :id => step, :step => @attr
-         step.reload
-         step.content.should == "updated step content"
-         step.estimated_time.should == 45
+        put :update, :project_id => project.id, :id => step, :step => @attr
+        step.reload
+        step.content.should == "updated step content"
+        step.estimated_time.should == 45
       end  
-      
+
       it "should redirect to the project page" do
         put :update, :project_id => project.id, :id => step, :step => @attr
         response.should redirect_to(project_steps_path(step.project))
@@ -108,6 +108,13 @@ describe StepsController do
     it "should redirect to the project page" do
       delete :destroy, :project_id => project.id, :id => step
       response.should redirect_to(project_steps_path(step.project))
+    end
+  end
+
+  describe "GET 'sort'" do
+    it "should be successful" do
+      get :sort, :project_id => project.id
+      response.should be_success
     end
   end
 end

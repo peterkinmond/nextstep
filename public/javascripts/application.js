@@ -77,7 +77,7 @@ $(document).ready(function() {
 				type: 'post',
 				data: $('#stepTable tbody.content').sortable('serialize'),
 				dataType: 'script',
-				url: '/steps/sort'
+				url: 'steps/sort'
 			})
 		}
 	})
