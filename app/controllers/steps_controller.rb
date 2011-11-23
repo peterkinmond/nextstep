@@ -16,7 +16,7 @@ class StepsController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id]) 
-    @steps = @project.steps
+    @steps = @project.steps.order('position ASC')
   end
 
   def edit
@@ -38,8 +38,17 @@ class StepsController < ApplicationController
     @step.destroy
     redirect_to project_steps_path(@step.project)
   end
-  
+
+  # TODO: Add tests and re-factor
   def sort
-     render :nothing => true
+    counter = 1
+    params['step'].each do |step_id|
+      step = Step.find(step_id)
+      step.position = counter + 1
+      counter +=1
+      step.save
+    end
+    
+    render :nothing => true
   end
 end

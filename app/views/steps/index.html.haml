@@ -12,7 +12,7 @@
 			%th Actions 
 	%tbody.content
 		- @steps.each do |step|
-			%tr
+			%tr{ :id => "step_#{step.id}" }
 				%td
 					= form_for [@project, step] do |f|
 						= f.check_box 'completed', :class => 'submittable'
