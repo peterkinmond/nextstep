@@ -3,14 +3,14 @@
 	Project: #{@project.name}
 %h3
 	Next Step: #{@project.next_step_string}
-%table
+%table#stepTable
 	%thead
 		%tr
 			%th Done?
 			%th Step
 			%th Est. Time (Min)
 			%th Actions 
-	%tbody
+	%tbody.content
 		- @steps.each do |step|
 			%tr
 				%td

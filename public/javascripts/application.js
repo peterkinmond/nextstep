@@ -35,29 +35,29 @@ function domo() {
 
 
 	// Select specific project's page
-	
+
 	// TODO: Clean up ugly copy paste
 	if(window.location.pathname === '/projects') {
 		jQuery(document).bind('keydown', 'shift+1', function (evt) {
 			$(location).attr('href', '/projects/' + $('#1').attr('project_id') + '/steps');
 			return false;
 		});
-		
+
 		jQuery(document).bind('keydown', 'shift+2', function (evt) {
 			$(location).attr('href', '/projects/' + $('#2').attr('project_id') + '/steps');
 			return false;
 		}); 
-		
+
 		jQuery(document).bind('keydown', 'shift+3', function (evt) {
 			$(location).attr('href', '/projects/' + $('#3').attr('project_id') + '/steps');
 			return false;
 		});      
-		
+
 		jQuery(document).bind('keydown', 'shift+4', function (evt) {
 			$(location).attr('href', '/projects/' + $('#4').attr('project_id') + '/steps');
 			return false;
 		});
-		
+
 		jQuery(document).bind('keydown', 'shift+5', function (evt) {
 			$(location).attr('href', '/projects/' + $('#5').attr('project_id') + '/steps');
 			return false;
@@ -65,5 +65,20 @@ function domo() {
 	}
 }
 
-
 jQuery(document).ready(domo);     
+
+
+
+// Make the project steps sortable
+$(document).ready(function() {
+	$("#stepTable tbody.content").sortable({
+		update: function(){
+			$.ajax({
+				type: 'post',
+				data: $('#stepTable tbody.content').sortable('serialize'),
+				dataType: 'script',
+				url: '/steps/sort'
+			})
+		}
+	})
+});
