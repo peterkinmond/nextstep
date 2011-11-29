@@ -8,18 +8,19 @@
 			%th Priority
 	%tbody
 		- @projects.each do |project|
-			%tr
-				%td.projectname
-					= link_to project.next_step_string, project
-				%td
-					= project.next_step.estimated_time
-					min
-				%td.priority
-					- if project.next_step.urgent
-						U
-					- else
-						u
-					- if project.next_step.important
-						I
-					- else
-						i
+			- if project.next_step != nil
+				%tr
+					%td.projectname
+						= link_to project.next_step_string, project_steps_path(project)
+					%td
+						= project.next_step.estimated_time
+						min
+					%td.priority
+						- if project.next_step.urgent
+							U
+						- else
+							u
+						- if project.next_step.important
+							I
+						- else
+							i  

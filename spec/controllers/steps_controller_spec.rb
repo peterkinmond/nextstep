@@ -47,19 +47,15 @@ describe StepsController do
   end
 
   describe "GET 'index'" do
-    before(:each) do
-
-    end
-
     it "should be successful" do
       get :index, :project_id => project.id
       response.should be_success
     end
 
-    it "should have the right project and steps" do
+    it "should have the right project and ordered steps" do
       get :index, :project_id => project
       assigns(:project).should == project
-      assigns(:steps).should == project.steps
+      assigns(:steps).should == project.steps.order('position ASC')
     end   
   end
 
@@ -113,7 +109,8 @@ describe StepsController do
 
   describe "GET 'sort'" do
     it "should be successful" do
-      get :sort, :project_id => project.id
+      step = project.steps.create(:content => "this step")   
+      get :sort, :project_id => project.id, :step => [step]
       response.should be_success
     end
   end
