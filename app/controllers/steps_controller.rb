@@ -48,7 +48,15 @@ class StepsController < ApplicationController
       counter +=1
       step.save
     end
-    
+
     render :nothing => true
+  end
+
+  def urgent
+    @step = Step.find(params[:id])
+    @step.urgent = !@step.urgent
+    @step.save
+
+    # redirect_to todo_projects_path
   end
 end

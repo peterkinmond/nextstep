@@ -1,9 +1,11 @@
 NextStep::Application.routes.draw do 
   resources :users  
   resources :sessions,  :only => [:new, :create, :destroy]
-  resources :projects do 
+  resources :projects do
+    get 'todo', :on => :collection
     resources :steps do
       post 'sort', :on => :collection
+      post 'urgent', :on => :member
     end
   end
 
@@ -14,5 +16,5 @@ NextStep::Application.routes.draw do
   match '/signup',    :to => 'users#new' 
   match '/signin',    :to => 'sessions#new'
   match '/signout',   :to => 'sessions#destroy'
-  match '/todo',      :to => 'projects#todo'
+  # match '/todo',      :to => 'projects#todo'
 end
