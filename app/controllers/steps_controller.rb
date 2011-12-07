@@ -15,12 +15,12 @@ class StepsController < ApplicationController
   end
 
   def index
-    @project = Project.find(params[:project_id]) 
+    @project = Project.find(params[:project_id])
     @steps = @project.steps.order('position ASC')
   end
 
   def edit
-    @project = Project.find(params[:project_id])    
+    @project = Project.find(params[:project_id])
     @step = Step.find(params[:id])
   end
 
@@ -30,7 +30,7 @@ class StepsController < ApplicationController
       redirect_to project_steps_path(@step.project)
     else
       render 'edit'
-    end   
+    end
   end
 
   def destroy
@@ -48,7 +48,19 @@ class StepsController < ApplicationController
       counter +=1
       step.save
     end
-    
+
     render :nothing => true
+  end
+
+  def urgent
+    @step = Step.find(params[:id])
+    @step.urgent = !@step.urgent
+    @step.save
+  end
+
+  def important
+    @step = Step.find(params[:id])
+    @step.important = !@step.important
+    @step.save
   end
 end

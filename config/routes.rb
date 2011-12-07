@@ -3,7 +3,9 @@ NextStep::Application.routes.draw do
   resources :sessions,  :only => [:new, :create, :destroy]
   resources :projects do 
     resources :steps do
-      post 'sort', :on => :collection
+      post 'sort',    :on => :collection
+      post 'urgent',  :on => :member
+      post 'important',  :on => :member
     end
   end
 

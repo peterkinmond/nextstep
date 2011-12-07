@@ -9,18 +9,14 @@
 	%tbody
 		- @projects.each do |project|
 			- if project.next_step != nil
-				%tr
+				%tr{ :id => "step_#{project.next_step.id}" }
 					%td.projectname
 						= link_to project.next_step_string, project_steps_path(project)
 					%td
 						= project.next_step.estimated_time
 						min
 					%td.priority
-						- if project.next_step.urgent
-							U
-						- else
-							u
-						- if project.next_step.important
-							I
-						- else
-							i  
+						= link_to project.next_step.important ? "I" : "i", important_project_step_path(project, project.next_step),
+		    				:method => "post", :remote => true, :class => "importance", :id => project
+						= link_to project.next_step.urgent ? "U" : "u", urgent_project_step_path(project, project.next_step),
+	    					:method => "post", :remote => true, :class => "urgency", :id => project
