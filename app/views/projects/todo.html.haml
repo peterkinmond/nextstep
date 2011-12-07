@@ -7,16 +7,16 @@
 			%th Est. Time
 			%th Priority
 	%tbody
-		- @projects.each do |project|
-			- if project.next_step != nil
-				%tr{ :id => "step_#{project.next_step.id}" }
+		- @next_steps.each do |step|
+			- if step != nil
+				%tr{ :id => "step_#{step.id}" }
 					%td.projectname
-						= link_to project.next_step_string, project_steps_path(project)
+						= link_to step.content, project_steps_path(step.project)
 					%td
-						= project.next_step.estimated_time
+						= step.estimated_time
 						min
 					%td.priority
-						= link_to project.next_step.important ? "I" : "i", important_project_step_path(project, project.next_step),
-		    				:method => "post", :remote => true, :class => "importance", :id => project
-						= link_to project.next_step.urgent ? "U" : "u", urgent_project_step_path(project, project.next_step),
-	    					:method => "post", :remote => true, :class => "urgency", :id => project
+						= link_to step.important ? "I" : "i", important_project_step_path(step.project, step),
+		    				:method => "post", :remote => true, :class => "importance", :id => step.project
+						= link_to step.urgent ? "U" : "u", urgent_project_step_path(step.project, step),
+	    					:method => "post", :remote => true, :class => "urgency", :id => step.project

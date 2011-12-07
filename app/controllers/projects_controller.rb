@@ -42,7 +42,8 @@ class ProjectsController < ApplicationController
   end
   
   def todo
-    @projects = Project.where(:user_id => current_user)
-    @next_steps = @projects.each {|p| p.next_step}
+    @next_steps = Project.where(:user_id => current_user).
+                  map(&:next_step).compact.
+                  sort_by{|step,_| [step.important ? -1 : 1, step.urgent ? -1 : 1]}
   end
 end
