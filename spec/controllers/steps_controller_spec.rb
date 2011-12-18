@@ -55,7 +55,7 @@ describe StepsController do
     it "should have the right project and ordered steps" do
       get :index, :project_id => project
       assigns(:project).should == project
-      assigns(:steps).should == project.steps.order('position ASC')
+      assigns(:steps).should == project.steps.order(:position)
     end   
   end
 

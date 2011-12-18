@@ -10,13 +10,13 @@ class StepsController < ApplicationController
     step = Step.new(params[:step])
     step.project = @project
     step.save
-    @steps = @project.steps
+    @steps = @project.steps.order(:position)
     render :index
   end
 
   def index
     @project = Project.find(params[:project_id])
-    @steps = @project.steps.order('position ASC')
+    @steps = @project.steps.order(:position)
   end
 
   def edit
