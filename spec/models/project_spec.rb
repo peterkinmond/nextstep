@@ -9,14 +9,16 @@ describe Project do
   describe "#next_step" do
     before(:each) do
       @project = Factory.create(:project)
-      @completed_step = @project.steps.create(:content => "completed step", :completed => true)
-      @uncompleted_step = @project.steps.create(:content => "uncompleted step", :completed => false)
-      
+      @completed_step = Step.create(:content => "completed step", :completed => true)
+      @uncompleted_step1 = Step.create(:content => "uncompleted step",   :position => 2, :completed => false)
+      @uncompleted_step2 = Step.create(:content => "uncompleted step 2", :position => 1, :completed => false)
+      @project.steps = [@completed_step, @uncompleted_step1, @uncompleted_step2]
+
       @empty_project = Project.new(:name => "Empty project")
     end
 
-    it "should find the first uncompleted step for the project" do
-      @project.next_step.should == @uncompleted_step
+    it "should find the uncompleted step with the lowest position for the project" do
+      @project.next_step.should == @uncompleted_step2
     end
     
     it "should return nil if no uncompleted steps left in project" do

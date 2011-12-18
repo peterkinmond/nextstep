@@ -22,7 +22,7 @@ class Step < ActiveRecord::Base
   after_create  :set_position
   
   def set_position
-     self.position = self.id
+     self.position ||= self.id
      self.save
   end
 end

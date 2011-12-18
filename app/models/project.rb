@@ -26,7 +26,7 @@ class Project < ActiveRecord::Base
   validates :user, :presence => true
   
   def next_step
-     self.steps.where(:completed => false).first
+     self.steps.where(:completed => false).order(:position).first
   end
   
   def next_step_string
