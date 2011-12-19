@@ -49,7 +49,9 @@ class StepsController < ApplicationController
       step.save
     end
 
-    render :nothing => true
+    @next_step_string = Project.find(params[:project_id]).next_step_string
+
+    render :index
   end
 
   def urgent
