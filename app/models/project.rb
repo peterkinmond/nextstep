@@ -24,6 +24,9 @@ class Project < ActiveRecord::Base
   has_many :steps
   
   validates :user, :presence => true
+
+  scope :active,    where(:status => 1)
+  scope :archived,  where(:status => 0)
   
   def next_step
      self.steps.where(:completed => false).order(:position).first

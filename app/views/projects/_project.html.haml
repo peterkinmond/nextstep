@@ -7,3 +7,4 @@
 		%td
 			= link_to 'Update', edit_project_path(project)
 			= link_to 'Delete', project, :confirm => "Delete this project and #{project.steps.count} associated steps?", :method => :delete
+			= link_to 'Archive', archive_project_path(project), :method => "post"

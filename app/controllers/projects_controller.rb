@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.where(:user_id => current_user)
+    @projects = Project.active.where(:user_id => current_user)
   end
 
   def show
@@ -45,5 +45,12 @@ class ProjectsController < ApplicationController
     @next_steps = Project.where(:user_id => current_user).
                   map(&:next_step).compact.
                   sort_by{|step,_| [step.important ? -1 : 1, step.urgent ? -1 : 1]}
+  end
+
+  def archive
+    @project = Project.find(params[:id])
+    @project.status = 0
+    @project.save
+    redirect_to projects_path
   end
 end
