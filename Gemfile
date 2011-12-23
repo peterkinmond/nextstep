@@ -15,6 +15,7 @@ group :development do
   gem 'rspec-rails'
   gem 'webrat'
   gem 'annotate'
+  gem 'awesome_print'
 end
 
 group :test do
