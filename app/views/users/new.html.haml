@@ -1,6 +1,26 @@
-%h1 Sign up
+%div.sign-in
+	%h3 Sign up
 
-= form_for(@user) do |f|
-	= render 'fields', :fields => f
-	.actions
+	= form_for(@user) do |f|
+		= render 'fields', :fields => f
+		.actions
 		= f.submit "Sign up"
+	%p
+	%p
+		Existing user? #{link_to "Sign in", root_path}
+
+%div.welcome-blurb
+	%h2 Welcome to NextStep
+
+	%p
+		NextStep is a project tracker to help keep things organized in a simple way.
+		It's loosely based on some of the principles from David Allen's
+		#{link_to "Getting Things Done", "http://www.amazon.com/gp/product/0142000280", :target => "_blank"}.
+
+	%p
+		#{link_to "Find out more information about how to use the app", about_path }
+	%p
+		#{link_to "Contact me", contact_path }
+
+
+
