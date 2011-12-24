@@ -17,4 +17,19 @@ describe Step do
   it { should allow_mass_assignment_of(:urgent)}
   it { should allow_mass_assignment_of(:important)}
   it { should allow_mass_assignment_of(:position)}
+
+  describe "#waiting" do
+    before do
+      @step = Step.create(:content => 'random step')
+    end
+
+    it "should be TRUE if step involves waiting on someone else to do something" do
+      @step.content = "wait for something to happen"
+      @step.waiting?.should be_true
+    end
+
+    it "should be FALSE if step doesn't involve waiting" do
+      @step.waiting?.should be_false
+    end
+  end
 end                                    

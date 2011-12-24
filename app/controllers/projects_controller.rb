@@ -20,8 +20,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-  end  
-  
+  end
+
   def edit
     @project = Project.find(params[:id])
   end
@@ -34,17 +34,19 @@ class ProjectsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
-  
+
   def todo
-    @next_steps = Project.where(:user_id => current_user).
-                  map(&:next_step).compact.
-                  sort_by{|step,_| [step.important ? -1 : 1, step.urgent ? -1 : 1]}
+    next_steps_unsorted = Project.active.where(:user_id => current_user).
+        map(&:next_step).compact.reject(&:waiting?)
+
+    @next_steps = next_steps_unsorted.
+        sort_by { |step, _| [step.important ? -1 : 1, step.urgent ? -1 : 1] }
   end
 
   def archive

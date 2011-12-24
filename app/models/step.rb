@@ -16,7 +16,7 @@ class Step < ActiveRecord::Base
   
   belongs_to :project
   
-  validates :content,     :presence => true
+  validates :content,  :presence => true
   validates :project,  :presence => true
   
   after_create  :set_position
@@ -24,5 +24,9 @@ class Step < ActiveRecord::Base
   def set_position
      self.position ||= self.id
      self.save
+  end
+
+  def waiting?
+    self.content =~ /^wait(ing)?/i ? true : false
   end
 end

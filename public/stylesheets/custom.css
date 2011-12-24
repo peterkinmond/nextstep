@@ -98,6 +98,12 @@ nav ul li a {
 	font-weight: bold;
 }
 
+/* Projects */
+.waiting_project {
+    background: gray;
+}
+
+
 /* Steps */
 
 .step_completed {
