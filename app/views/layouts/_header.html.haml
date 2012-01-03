@@ -1,7 +1,7 @@
 .topbar
   .fill
     .container
-      %a.brand{:href => "#"} NextStep
+      %a.brand{:href => projects_path} NextStep
       %ul.nav
         - if signed_in?
           %li= link_to "To-Do",     todo_path
