@@ -9,9 +9,9 @@
     = csrf_meta_tag
   %body
     = render 'layouts/header'
+
     .container
       .hero-unit
-        %section.round
-          - flash.each do |key, value|
-            %div{:class => "flash #{key}"}= value
-          = yield
+        - flash.each do |key, value|
+          %div{:class => "flash #{key}"}= value
+        = yield
