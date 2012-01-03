@@ -1,7 +1,12 @@
-%header
-	%nav.round
-		%ul
-			- if signed_in?
-				%li= link_to "To-Do", 		todo_path
-				%li= link_to "Projects", 	projects_path, :id => 'projects_page'
-				%li= link_to "Sign Out", 	signout_path
+.topbar
+  .fill
+    .container
+      %a.brand{:href => "#"} NextStep
+      %ul.nav
+        - if signed_in?
+          %li= link_to "To-Do",     todo_path
+          %li= link_to "Projects",   projects_path, :id => 'projects_page'
+          %li= link_to "Sign Out",   signout_path
+      %ul.nav.secondary-nav
+        %li= link_to "About", about_path
+        %li= link_to "Contact", contact_path
