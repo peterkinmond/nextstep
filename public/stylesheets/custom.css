@@ -120,3 +120,8 @@ nav ul li a {
 	font-weight: bold;
 	font-size: 130%;
 }
+
+/* Tables */
+.tableHead {
+    background: #C3D9FF;
+}
