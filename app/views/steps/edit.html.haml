@@ -1,8 +1,6 @@
 %h3 Edit step
 = form_for [@project, @step] do |f|
-  .field
-    = f.text_field :content, :class => "newStep", :autofocus => true, :style => "height:20px;width:600px;"
-    = f.select(:estimated_time, %w[5 10 15 20 25 30 35 40], :selected => 10)
-    min
-  .actions
-    = f.submit "Update"
+  = f.text_field :content, :autofocus => true, :style => "height:20px;width:600px;"
+  = f.select(:estimated_time, %w[5 10 15 20 25 30 35 40], {:selected => 10}, {:style => 'width:80px;'})
+  min
+  = f.submit "Update", :class => 'btn primary', :style => 'margin-left: 20px;'
