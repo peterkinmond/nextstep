@@ -1,22 +1,22 @@
 %h1 
-	To-Do
+  To-Do
 %table
-	%thead.tableHead
-		%tr
-			%th Next Step
-			%th Est. Time
-			%th Priority
-	%tbody
-		- @next_steps.each do |step|
-			- if step != nil
-				%tr{ :id => "step_#{step.id}" }
-					%td.projectname
-						= link_to step.content, project_steps_path(step.project)
-					%td
-						= step.estimated_time
-						min
-					%td.priority
-						= link_to step.important ? "I" : "i", important_project_step_path(step.project, step),
-		    				:method => "post", :remote => true, :class => "importance", :id => step.project
-						= link_to step.urgent ? "U" : "u", urgent_project_step_path(step.project, step),
-	    					:method => "post", :remote => true, :class => "urgency", :id => step.project
+  %thead.tableHead
+    %tr
+      %th Next Step
+      %th Est. Time
+      %th Priority
+  %tbody
+    - @next_steps.each do |step|
+      - if step != nil
+        %tr{ :id => "step_#{step.id}" }
+          %td.projectname
+            = link_to step.content, project_steps_path(step.project)
+          %td
+            = step.estimated_time
+            min
+          %td.priority
+            = link_to step.important ? "I" : "i", important_project_step_path(step.project, step),
+                :method => "post", :remote => true, :class => "importance", :id => step.project
+            = link_to step.urgent ? "U" : "u", urgent_project_step_path(step.project, step),
+                :method => "post", :remote => true, :class => "urgency", :id => step.project

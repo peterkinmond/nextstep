@@ -1,10 +1,10 @@
 %tbody
-	%tr{:id => project_counter + 1, :project_id => project.id, :class => (project.next_step && project.next_step.waiting?) ? 'waiting_project' : '' }
-		%td.projectname
-			= link_to project.name, project_steps_path(project)
-		%td.nextstep
-			= project.next_step_string
-		%td
-			= link_to 'Update', edit_project_path(project)
-			= link_to 'Delete', project, :confirm => "Delete this project and #{project.steps.count} associated steps?", :method => :delete
-			= link_to 'Archive', archive_project_path(project), :method => "post"
+  %tr{:id => project_counter + 1, :project_id => project.id, :class => (project.next_step && project.next_step.waiting?) ? 'waiting_project' : '' }
+    %td.projectname
+      = link_to project.name, project_steps_path(project)
+    %td.nextstep
+      = project.next_step_string
+    %td
+      = link_to 'Update', edit_project_path(project)
+      = link_to 'Delete', project, :confirm => "Delete this project and #{project.steps.count} associated steps?", :method => :delete
+      = link_to 'Archive', archive_project_path(project), :method => "post"

@@ -19,10 +19,10 @@ group :development do
 end
 
 group :test do
-	gem 'rspec-rails'
-	gem 'webrat'
-	gem 'annotate'
-	gem 'spork'
-	gem 'factory_girl_rails', '1.0'
-	gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  gem 'webrat'
+  gem 'annotate'
+  gem 'spork'
+  gem 'factory_girl_rails', '1.0'
+  gem 'shoulda-matchers'
 end   
