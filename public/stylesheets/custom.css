@@ -1,49 +1,54 @@
+/* Body */
+.body {
+    padding-top: 60px;
+}
+
 /*   SignIn Page  */
 .sign-in {
-	width: 335px;
-	float: right;
-	background: whiteSmoke;
-	margin: 12px 0 0;
-	padding: 20px;
-	border: 1px solid #E5E5E5;
+    width: 335px;
+    float: right;
+    background: whiteSmoke;
+    margin: 12px 0 0;
+    padding: 20px;
+    border: 1px solid #E5E5E5;
 }
 
 .welcome-blurb {
-	height: 400px;
-	width: 450px;
+    height: 400px;
+    width: 450px;
 }
 
 /* Round corners */
-                
+
 .round {
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
-/* Nav */ 
+/* Nav */
 
 nav {
-	float: left;
-	background: white;
-	padding: 0 0.7em;
-	white-space: nowrap;
+    float: left;
+    background: white;
+    padding: 0 0.7em;
+    white-space: nowrap;
 }
 
 nav ul {
-	margin: 0;
-	padding: 0;
-}     
+    margin: 0;
+    padding: 0;
+}
 
 nav ul li {
-	list-style-type: none;
-	display: inline-block;
-	padding: 0.2em 0;
+    list-style-type: none;
+    display: inline-block;
+    padding: 0.2em 0;
 }
 
 nav ul li a {
-	padding: 0 5px;
-	font-weight: bold;
+    padding: 0 5px;
+    font-weight: bold;
 }
 
 /* Projects */
@@ -51,21 +56,19 @@ nav ul li a {
     background: gray;
 }
 
-
 /* Steps */
 .step_completed {
-	text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .step_uncompleted {
-	font-weight: bold;
+    font-weight: bold;
 }
-
 
 /* Todo List */
 .priority {
-	font-weight: bold;
-	font-size: 130%;
+    font-weight: bold;
+    font-size: 130%;
 }
 
 /* Tables */
