@@ -1,17 +1,13 @@
 = render 'shared/error_messages', :object => fields.object
-.field
+.clearfix
   = fields.label :name
-  %br/
   = fields.text_field :name, :autofocus => true
-.field
+.clearfix
   = fields.label :email
-  %br/
   = fields.text_field :email
-.field
+.clearfix
   = fields.label :password
-  %br/
   = fields.password_field :password
-.field
+.clearfix
   = fields.label :password_confirmation, "Confirm password"
-  %br/
   = fields.password_field :password_confirmation

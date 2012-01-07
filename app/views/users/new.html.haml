@@ -1,13 +1,10 @@
 %div.sign-in
-  %h3 Sign up
-
-  = form_for(@user) do |f|
-    = render 'fields', :fields => f
-    .actions
-    = f.submit "Sign up"
-  %p
-  %p
-    Existing user? #{link_to "Sign in", root_path}
+  = form_for(@user, :html => { :class => 'form-stacked' }) do |f|
+    %fieldset
+      %legend Sign up
+      = render 'fields', :fields => f
+      = f.submit "Sign up", :class => "btn primary"
+    %h3 Existing user? #{link_to "Sign in", root_path}
 
 %div.welcome-blurb
   %h2 Welcome to NextStep

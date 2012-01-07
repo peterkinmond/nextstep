@@ -1,19 +1,15 @@
 %div.sign-in
-  %h3= @title
-  = form_for(:session, :url => sessions_path) do |f|
-    .field
-      = f.label :email
-      %br/
-      = f.text_field :email, :autofocus => true
-    .field
-      = f.label :password
-      %br/
-      = f.password_field :password
-    .actions
-      = f.submit "Sign in"
-  %p
-  %p
-    New user? #{link_to "Sign up", signup_path}
+  = form_for(:session, :url => sessions_path, :html => { :class => 'form-stacked' }) do |f|
+    %fieldset
+      %legend= @title
+      .clearfix
+        = f.label :email
+        = f.text_field :email, :autofocus => true
+      .clearfix
+        = f.label :password
+        = f.password_field :password
+      = f.submit "Sign in", :class => "btn primary"
+    %h3 New user? #{link_to "Sign up", signup_path}
 
 %div.welcome-blurb
   %h2 Welcome to NextStep
