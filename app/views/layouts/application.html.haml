@@ -12,5 +12,5 @@
     .container
       .hero-unit
         - flash.each do |key, value|
-          %div{:class => "flash #{key}"}= value
+          %div{:class => "alert-message #{key}"}= value
         = yield
