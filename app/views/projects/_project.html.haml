@@ -1,7 +1,7 @@
 %tbody
   %tr{:id => project_counter + 1, :project_id => project.id, :class => (project.next_step && project.next_step.waiting?) ? 'waiting_project' : '' }
     %td.projectname
-      = link_to project.name, project_steps_path(project)
+      = link_to "#{project_counter + 1}. #{project.name}", project_steps_path(project)
     %td.nextstep
       = project.next_step_string
     %td
