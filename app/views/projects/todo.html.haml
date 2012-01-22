@@ -4,14 +4,17 @@
   %thead.tableHead
     %tr
       %th Next Step
-      %th Est. Time
-      %th Priority
+      %th Project
+      %th.span2 Est. Time
+      %th.span2 Priority
   %tbody
     - @next_steps.each do |step|
       - if step != nil
         %tr{ :id => "step_#{step.id}" }
           %td.projectname
             = link_to step.content, project_steps_path(step.project)
+          %td
+            = step.project.name
           %td
             = step.estimated_time
             min

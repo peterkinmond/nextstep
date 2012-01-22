@@ -6,10 +6,10 @@
 %table#stepTable.condensed-table
   %thead.tableHead
     %tr
-      %th Done?
+      %th.span2 Done?
       %th Step
-      %th Est. Time (Min)
-      %th Actions 
+      %th.span4 Est. Time (Min)
+      %th.span3 Actions
   %tbody.content
     - @steps.each do |step|
       %tr{ :id => "step_#{step.id}" }
