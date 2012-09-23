@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe StepsController do
-  let(:user) { test_sign_in(Factory(:user)) }
+  let(:user) { test_sign_in(FactoryGirl.create(:user)) }
   let(:project) { user.projects.create(:name => "La Project Du Pierre")}
   let(:step) { project.steps.create(:content => "this step") }
 
@@ -19,11 +19,6 @@ describe StepsController do
 
   describe "POST 'create'" do
     describe "failure" do
-      it "should be successful" do
-        post :create, :project_id => project.id, :step => ""
-        response.should be_success
-      end
-
       it "should not create a step" do
         lambda do
           post :create, :project_id => project.id, :step => ""
@@ -33,8 +28,9 @@ describe StepsController do
 
     describe "success" do
       it "should create a step" do
-        post :create, :project_id => project.id, :step => "New Step"
-        response.should be_success
+        lambda do
+          post :create, :project_id => project.id, :step => {:content => "New Step"}
+        end.should change(Step, :count).by(1)
       end  
     end
   end

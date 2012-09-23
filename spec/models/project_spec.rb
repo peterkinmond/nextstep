@@ -8,7 +8,7 @@ describe Project do
 
   describe "#next_step" do
     before(:each) do
-      @project = Factory.create(:project)
+      @project = FactoryGirl.create(:project)
       @completed_step = Step.create(:content => "completed step", :completed => true)
       @uncompleted_step1 = Step.create(:content => "uncompleted step",   :position => 2, :completed => false)
       @uncompleted_step2 = Step.create(:content => "uncompleted step 2", :position => 1, :completed => false)

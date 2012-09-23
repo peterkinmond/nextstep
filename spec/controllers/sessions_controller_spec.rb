@@ -12,7 +12,7 @@ describe SessionsController do
 
     context "when user is already signed in" do
       before(:each) do
-        test_sign_in(Factory(:user))
+        test_sign_in(FactoryGirl.create(:user))
       end
       it "should redirect to Projects page" do
         get :new
@@ -50,7 +50,7 @@ describe SessionsController do
 
     describe "success" do
       before(:each) do
-        @user = Factory(:user)
+        @user = FactoryGirl.create(:user)
         @attr = { :email => @user.email, :password => @user.password }
       end
 
@@ -69,7 +69,7 @@ describe SessionsController do
 
   describe "DELETE 'destroy'" do
     it "should sign a user out" do
-      test_sign_in(Factory(:user))
+      test_sign_in(FactoryGirl.create(:user))
       delete :destroy
       controller.should_not be_signed_in
       response.should redirect_to(root_path)

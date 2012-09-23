@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails'
 gem 'haml'
 gem 'jquery-rails'
 
@@ -23,6 +23,6 @@ group :test do
   gem 'webrat'
   gem 'annotate'
   gem 'spork'
-  gem 'factory_girl_rails', '1.0'
+  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 end   
