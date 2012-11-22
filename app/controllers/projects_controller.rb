@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate
+  before_filter :ensure_user_has_access, :only => [:edit, :update, :destroy, :archive]
 
   def new
     @project = Project.new
@@ -18,16 +19,10 @@ class ProjectsController < ApplicationController
     @projects = Project.active.where(:user_id => current_user)
   end
 
-  def show
-    @project = Project.find(params[:id])
-  end
-
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update_attributes(params[:project])
       redirect_to projects_path
     else
@@ -36,7 +31,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
@@ -50,9 +44,15 @@ class ProjectsController < ApplicationController
   end
 
   def archive
-    @project = Project.find(params[:id])
     @project.status = 0
     @project.save
     redirect_to projects_path
+  end
+
+  def ensure_user_has_access
+    @project = Project.find(params[:id])
+    if current_user != @project.user
+      render :nothing => true, :status => 403
+    end
   end
 end

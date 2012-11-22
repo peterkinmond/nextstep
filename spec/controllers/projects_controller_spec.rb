@@ -13,7 +13,7 @@ describe ProjectsController do
   describe "GET 'new'" do
     before(:each) do
       @user = test_sign_in(FactoryGirl.create(:user))
-    end 
+    end
 
     it "should be successful" do
       get :new
@@ -37,11 +37,11 @@ describe ProjectsController do
       it "should redirect to the project index page" do
         post :create, :project => @project
         response.should redirect_to(projects_path)
-      end 
+      end
     end
   end
 
-  describe "GET 'index'" do 
+  describe "GET 'index'" do
 
     describe "user associations" do
 
@@ -56,12 +56,12 @@ describe ProjectsController do
       it "should be successful" do
         get :index
         response.should be_success
-      end 
+      end
 
       it "should show projects that belong to current user" do
-        get :index      
+        get :index
         response.should have_selector('td.projectname', :content => "User 1's Project")
-      end                            
+      end
 
       it "should NOT show projects that DO NOT belong to current user" do
         get :index
@@ -80,13 +80,13 @@ describe ProjectsController do
       end
     end
   end
-  
+
   describe "GET 'todo'" do
-    
+
     before(:each) do
       @user = test_sign_in(FactoryGirl.create(:user))
     end
-    
+
     it "should be successful" do
       get :todo
       response.should be_success

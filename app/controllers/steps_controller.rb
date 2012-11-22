@@ -1,12 +1,12 @@
 class StepsController < ApplicationController
   before_filter :authenticate
+  before_filter :ensure_user_has_access, :only => [:create, :index, :edit]
 
   def new
     @step = Step.new
   end
 
   def create
-    @project = Project.find(params[:project_id])
     step = Step.new(params[:step])
     step.project = @project
     step.save
@@ -15,13 +15,14 @@ class StepsController < ApplicationController
   end
 
   def index
-    @project = Project.find(params[:project_id])
     @steps = @project.steps.order(:position)
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @step = Step.find(params[:id])
+    if @step.project != @project
+      render :nothing => true, :status => 403
+    end
   end
 
   def update
@@ -64,5 +65,14 @@ class StepsController < ApplicationController
     @step = Step.find(params[:id])
     @step.important = !@step.important
     @step.save
+  end
+
+  private
+
+  def ensure_user_has_access
+    @project = Project.find(params[:project_id])
+    if current_user != @project.user
+      render :nothing => true, :status => 403
+    end
   end
 end

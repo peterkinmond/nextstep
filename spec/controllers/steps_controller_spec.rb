@@ -12,9 +12,9 @@ describe StepsController do
     end
 
     it "should deny access to 'destroy'" do
-      delete :destroy, :id => 1, :project_id => 1 
+      delete :destroy, :id => 1, :project_id => 1
       response.should redirect_to(signin_path)
-    end       
+    end
   end
 
   describe "POST 'create'" do
@@ -31,7 +31,7 @@ describe StepsController do
         lambda do
           post :create, :project_id => project.id, :step => {:content => "New Step"}
         end.should change(Step, :count).by(1)
-      end  
+      end
     end
   end
 
@@ -52,13 +52,22 @@ describe StepsController do
       get :index, :project_id => project
       assigns(:project).should == project
       assigns(:steps).should == project.steps.order(:position)
-    end   
+    end
+
+    it "ensures user has access to project" do
+      user = test_sign_in(FactoryGirl.create(:user, :email => 'user1@example.com'))
+      other_user = FactoryGirl.create(:user, :email => 'user2@example.com')
+      other_project = other_user.projects.create(:name => "Secret Project")
+      get :index, :project_id => other_project
+      response.should_not be_success
+      response.status.should == 403 # Forbidden access
+    end
   end
 
   describe "PUT 'update'" do
     describe "failure" do
       before(:each) do
-        @attr = { :content => ""}   
+        @attr = { :content => ""}
       end
 
       it "should render the 'edit' page" do
@@ -69,7 +78,7 @@ describe StepsController do
 
     describe "success" do
       before(:each) do
-        @attr = { :content => "updated step content", :estimated_time => 45}   
+        @attr = { :content => "updated step content", :estimated_time => 45}
       end
 
       it "should change the step's attributes" do
@@ -77,7 +86,7 @@ describe StepsController do
         step.reload
         step.content.should == "updated step content"
         step.estimated_time.should == 45
-      end  
+      end
 
       it "should redirect to the project page" do
         put :update, :project_id => project.id, :id => step, :step => @attr
@@ -86,7 +95,7 @@ describe StepsController do
     end
   end
 
-  describe "DELETE 'destroy'" do 
+  describe "DELETE 'destroy'" do
     before(:each) do
       @step = project.steps.create(:content => "this step")
     end
@@ -105,7 +114,7 @@ describe StepsController do
 
   describe "GET 'sort'" do
     it "should be successful" do
-      step = project.steps.create(:content => "this step")   
+      step = project.steps.create(:content => "this step")
       get :sort, :project_id => project.id, :step => [step]
       response.should be_success
     end
