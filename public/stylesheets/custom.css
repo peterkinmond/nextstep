@@ -4,31 +4,6 @@
     border-radius: 10px;
 }
 
-/* Nav */
-
-nav {
-    float: left;
-    background: white;
-    padding: 0 0.7em;
-    white-space: nowrap;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    list-style-type: none;
-    display: inline-block;
-    padding: 0.2em 0;
-}
-
-nav ul li a {
-    padding: 0 5px;
-    font-weight: bold;
-}
-
 /* Projects */
 .waiting_project {
     background: gray;
