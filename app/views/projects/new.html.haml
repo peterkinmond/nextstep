@@ -1,3 +1,3 @@
-= form_for(Project.new) do |f|
+= form_for(Project.new, :html => { :class => 'form-inline'}) do |f|
   = f.text_field :name, :class => "smallTextbox", :placeholder => 'Add new project', :style => "height:20px;width:600px;"
-  = f.submit "Add", :class => 'btn primary'
+  = f.submit "Add", :class => 'btn btn-primary'

@@ -3,8 +3,8 @@
   Project: #{@project.name}
 %h3
   #nextStepText Next Step: #{@project.next_step_string}
-%table#stepTable.condensed-table
-  %thead.tableHead
+%table#stepTable.table.condensed-table
+  %thead
     %tr
       %th.span2 Done?
       %th Step
@@ -28,9 +28,9 @@
         %td
           = link_to 'Update', edit_project_step_path(@project, step)
           = link_to 'Delete', project_step_path(@project, step), :method => :delete
-= form_for [@project, Step.new] do |f|
+= form_for [@project, Step.new], :html => { :class => 'form-inline'} do |f|
   = f.hidden_field :project_id, :value => @project.id
   = f.text_field :content, :size => 100, :placeholder => 'Add new step', :style => "height:20px;width:600px;"
   = f.select(:estimated_time, %w[5 10 15 20 25 30 35 40], {:selected => 10}, {:style => 'width:80px;'})
   min
-  = f.submit "Add", :class => 'btn primary', :style => 'margin-left: 20px;'
+  = f.submit "Add", :class => 'btn btn-primary', :style => 'margin-left: 20px;'

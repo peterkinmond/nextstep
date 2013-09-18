@@ -1,25 +1,24 @@
-%div.sign-in
-  = form_for(:session, :url => sessions_path, :html => { :class => 'form-stacked' }) do |f|
-    %fieldset
-      %legend= @title
-      .clearfix
-        = f.label :email
-        = f.text_field :email, :autofocus => true
-      .clearfix
-        = f.label :password
-        = f.password_field :password
-      = f.submit "Sign in", :class => "btn primary"
-    %h3 New user? #{link_to "Sign up", signup_path}
+.row
+  .welcome-blurb.span7
+    %h2 Welcome to NextStep
 
-%div.welcome-blurb
-  %h2 Welcome to NextStep
+    %p
+      NextStep is a project tracker to help keep things organized in a simple way.
+      It's loosely based on some of the principles from David Allen's
+      #{link_to "Getting Things Done", "http://www.amazon.com/gp/product/0142000280", :target => "_blank"}.
 
-  %p
-    NextStep is a project tracker to help keep things organized in a simple way.
-    It's loosely based on some of the principles from David Allen's
-    #{link_to "Getting Things Done", "http://www.amazon.com/gp/product/0142000280", :target => "_blank"}.
+    %p
+      #{link_to "Contact me", contact_path }
 
-  %p
-    #{link_to "Find out more information about how to use the app", about_path }
-  %p
-    #{link_to "Contact me", contact_path }
+  .sign-in.span4
+    = form_for(:session, :url => sessions_path, :html => { :class => 'form-stacked' }) do |f|
+      %fieldset
+        %legend= @title
+        .clearfix
+          = f.label :email
+          = f.text_field :email, :autofocus => true
+        .clearfix
+          = f.label :password
+          = f.password_field :password
+        = f.submit "Sign in", :class => "btn primary"
+      %h3 New user? #{link_to "Sign up", signup_path}

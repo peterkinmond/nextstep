@@ -1,11 +1,5 @@
-/* Body */
-.body {
-    padding-top: 60px;
-}
-
 /*   SignIn Page  */
 .sign-in {
-    width: 335px;
     float: right;
     background: whiteSmoke;
     margin: 12px 0 0;
@@ -15,7 +9,6 @@
 
 .welcome-blurb {
     height: 400px;
-    width: 450px;
 }
 
 /* Round corners */
@@ -69,9 +62,4 @@ nav ul li a {
 .priority {
     font-weight: bold;
     font-size: 130%;
-}
-
-/* Tables */
-.tableHead {
-    background: #C3D9FF;
 }

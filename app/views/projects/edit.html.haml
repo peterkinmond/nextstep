@@ -1,5 +1,5 @@
 %h3 Edit project name
 
-= form_for(@project) do |f|
+= form_for(@project, :html => { :class => 'form-inline'}) do |f|
   = f.text_field :name, :class => "NewProject", :size => 100, :autofocus => true, :style => "height:20px;width:600px;"
-  = f.submit "Update", :class => 'btn primary'
+  = f.submit "Update", :class => 'btn btn-primary'
