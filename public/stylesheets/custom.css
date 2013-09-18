@@ -1,18 +1,3 @@
-/*   SignIn Page  */
-.sign-in {
-    float: right;
-    background: whiteSmoke;
-    margin: 12px 0 0;
-    padding: 20px;
-    border: 1px solid #E5E5E5;
-}
-
-.welcome-blurb {
-    height: 400px;
-}
-
-/* Round corners */
-
 .round {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
