@@ -11,20 +11,17 @@ gem 'pg'
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'heroku'
+  gem 'webrat'
+  gem 'annotate'
 end
 
 group :development do
-  gem 'rspec-rails'
-  gem 'webrat'
-  gem 'annotate'
   gem 'awesome_print'
 end
 
 group :test do
   gem 'rspec-rails'
-  gem 'webrat'
-  gem 'annotate'
   gem 'spork'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-end   
+end
