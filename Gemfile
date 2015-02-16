@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.5'
 
 gem 'rails'
 gem 'haml'
